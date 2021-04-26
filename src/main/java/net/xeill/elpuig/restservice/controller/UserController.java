@@ -46,13 +46,13 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public User getNoteById(@PathVariable(value = "id") Integer userId) {
+    public User getUserById(@PathVariable(value = "id") Integer userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
     }
 
     @PutMapping("/users/{id}")
-    public User updateNote(@PathVariable(value = "id") Integer userId,
+    public User updateUser(@PathVariable(value = "id") Integer userId,
                                            @Valid @RequestBody User userDetails) {
 
     	User user = userRepository.findById(userId)
@@ -67,7 +67,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Integer userId) {
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 

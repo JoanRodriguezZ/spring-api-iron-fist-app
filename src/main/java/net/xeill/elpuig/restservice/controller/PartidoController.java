@@ -2,6 +2,7 @@ package net.xeill.elpuig.restservice.controller;
 
 import net.xeill.elpuig.restservice.exception.ResourceNotFoundException;
 import net.xeill.elpuig.restservice.model.Partido;
+import net.xeill.elpuig.restservice.model.User;
 import net.xeill.elpuig.restservice.repository.PartidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class PartidoController {
     @GetMapping("/partidos/{id}")
     public Partido getPartidoById(@PathVariable(value = "id") Integer partidoId) {
         return partidoRepository.findById(partidoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Partido", "id", partidoId));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", partidoId));
     }
 
     @PutMapping("/partidos/{id}")

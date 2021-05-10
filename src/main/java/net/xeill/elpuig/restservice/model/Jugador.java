@@ -1,9 +1,6 @@
 package net.xeill.elpuig.restservice.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -19,26 +16,38 @@ public class Jugador {
 
     private int puntuacion;
 
-//    @NotBlank
+    @NotBlank
+//    @OneToMany(fetch = FetchType.LAZY)
 //    @Column(name = "pj_name1")
-//    private net.xeill.elpuig.restservice.model.Personaje personaje1;
-//
+//    @JoinColumn(name = "pj_name")
+    private String personaje1;
+
+//    @OneToMany(fetch = FetchType.LAZY)
 //    @Column(name = "pj_name2")
-//    private net.xeill.elpuig.restservice.model.Personaje personaje2;
+//    @JoinColumn(name = "nombre")
+//    private Personaje personaje2;
 
-   // @Column(name = "org_name")
-   // @OneToMany()
-   // private Organizacion organizacion;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @Column(name = "org_name")
+//    @JoinColumn(name = "org_name")
+//    private Organizacion organizacion;
+    private String organizacion;
 
-    public Jugador() {
-    }
-
-    public Jugador(String nickname, String name, String apellidos, int puntuacion) {
+    public Jugador(String nickname, String name, String apellidos, int puntuacion, String personaje1, String organizacion) {
         this.nickname = nickname;
         this.puntuacion = puntuacion;
         this.name = name;
         this.apellidos = apellidos;
-//        this.personaje1 = personaje1;
+        this.personaje1 = personaje1;
+        this.organizacion = organizacion;
+    }
+
+    public Jugador(String nickname, String name, String apellidos, int puntuacion, String personaje1) {
+        this.nickname = nickname;
+        this.puntuacion = puntuacion;
+        this.name = name;
+        this.apellidos = apellidos;
+        this.personaje1 = personaje1;
     }
 
     public String getName() {
@@ -72,20 +81,20 @@ public class Jugador {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-//
-//    public net.xeill.elpuig.restservice.model.Personaje getPersonaje1() {
+
+//    public Personaje getPersonaje1() {
 //        return personaje1;
 //    }
 //
-//    public void setPersonaje1(net.xeill.elpuig.restservice.model.Personaje personaje1) {
+//    public void setPersonaje1(Personaje personaje1) {
 //        this.personaje1 = personaje1;
 //    }
 //
-//    public net.xeill.elpuig.restservice.model.Personaje getPersonaje2() {
+//    public Personaje getPersonaje2() {
 //        return personaje2;
 //    }
 //
-//    public void setPersonaje2(net.xeill.elpuig.restservice.model.Personaje personaje2) {
+//    public void setPersonaje2(Personaje personaje2) {
 //        this.personaje2 = personaje2;
 //    }
 //
@@ -96,5 +105,6 @@ public class Jugador {
 //    public void setOrganizacion(Organizacion organizacion) {
 //        this.organizacion = organizacion;
 //    }
+
 
 }

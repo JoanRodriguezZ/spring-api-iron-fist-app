@@ -19,18 +19,18 @@ public class Partido {
     private int resultadoLocal, resultadoVisitante, puntuacionLocal, puntuacionVisitante;
 
     @NotBlank
-    @OneToOne
-    @JoinColumn(name="nickname")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="nickname")
     private Jugador jugadorLocal;
 
     @NotBlank
-    @OneToOne
-    @JoinColumn(name="nickname")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="nickname")
     private Jugador jugadorVisitante;
 
     @NotBlank
-    @OneToOne
-    @JoinColumn(name="id_organizador")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="id_organizador")
     private Organizador organizador;
 
     public Partido(int resultadoLocal, int resultadoVisitante, Jugador jugadorLocal, Jugador jugadorVisitante, Organizador organizador) {
@@ -40,14 +40,8 @@ public class Partido {
         this.jugadorVisitante = jugadorVisitante;
         this.organizador = organizador;
         fecha = LocalDateTime.now();
-    }
 
-
-    public Partido() {
-    }
-
-    public void play() {
-        int puntuacionResultante = (int) (Math.random() * 50);
+        int puntuacionResultante = (int) (Math.random() * 50 + 1);
 
         if (resultadoLocal > resultadoVisitante) {
             puntuacionLocal = (jugadorLocal.getPuntuacion() + puntuacionResultante);
@@ -66,6 +60,7 @@ public class Partido {
         } else  {
             System.out.println("No puede haber un empate.");
         }
+
     }
 
     public int getIdPartido() {

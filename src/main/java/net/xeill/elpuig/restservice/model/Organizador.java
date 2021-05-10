@@ -21,9 +21,6 @@ public class Organizador {
         this.nombre = nombre;
     }
 
-    public Organizador() {
-    }
-
     public int getIdOrganizador() {
         return idOrganizador;
     }
